@@ -11,9 +11,6 @@ const classes = {
         fontFamily: 'Roboto'
 
     },
-    logo: {
-        marginLeft: '30px'
-    },
    
     p: {
         textDecoration: 'none',

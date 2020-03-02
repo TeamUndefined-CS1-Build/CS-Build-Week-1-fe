@@ -23,9 +23,8 @@ const classes = {
     desc: {
         marginLeft: '200px',
         color: 'white',
-        fontStyle: 'italic',
         textTransform: 'uppercase',
-        opacity: '0.5'
+        opacity: '0.7'
     },
     button: {
         marginLeft: '200px',
