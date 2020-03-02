@@ -8,7 +8,7 @@ const classes = {
         justifyContent: 'space-evenly',
         fontSize: '1rem',
         alignItems: 'center',
-        fontFamily: 'Roboto'
+        fontFamily: 'Roboto Mono'
 
     },
    

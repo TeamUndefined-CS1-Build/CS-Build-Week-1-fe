@@ -1,15 +1,10 @@
 body {
   margin: 0;
-  font-family:'Roboto', 'Oxygen',
+  font-family:'Roboto Mono', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: 'black'
-  /* background: linear-gradient(#3d4057, #cecece);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh; */
 }
 
 code {

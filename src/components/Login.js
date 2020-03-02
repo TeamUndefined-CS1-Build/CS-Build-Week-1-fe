@@ -62,7 +62,8 @@ const useStyles = makeStyles(theme => ({
     background: '#4f4873',
     "&:hover": {
       background:'#4f4873'
-    }
+    },
+    fontFamily: 'Roboto Mono',
   },
 }));
 
@@ -102,9 +103,9 @@ export default function Login(props) {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <h2>
             Log in
-          </Typography>
+          </h2>
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
               onChange={handleChange}

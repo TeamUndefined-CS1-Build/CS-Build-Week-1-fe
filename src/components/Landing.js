@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 
 const classes = {
     container: {
+        fontFamily: 'Roboto Mono',
         height: '100vh',
         textAlign: 'left',
         transition: '0.5s',
@@ -14,7 +15,6 @@ const classes = {
     },
     header: {
         color: 'white',
-        fontFamily: 'Roboto',
         fontSize: '3rem',
         marginTop: '250px',
         marginLeft: '200px',
