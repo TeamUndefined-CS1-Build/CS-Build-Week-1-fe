@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2),
     background: '#4f4873',
     "&:hover": {
-      background:'#db39b6'
+      background:'#4f4873'
     }
   },
 }));
@@ -144,7 +144,7 @@ export default function Login(props) {
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
