@@ -1,9 +1,25 @@
 import React from 'react'
+import walkSprite from './player_walk.png'
+import { useSelector } from 'react-redux'
+import handleMovement from './movement'
 
 const Player = props => {
+
+    const player = useSelector(state => state.player)
+
     return (
-        <div>Player</div>
+        <div
+            style={{
+                position: 'absolute',
+                top: player.position[1],
+                left: player.position[0],
+                backgroundImage: `url('${walkSprite}')`,
+                backgroundPosition: '0 0',
+                width: '44px',
+                height: '53px'
+            }}
+        />
     )
 }
 
-export default Player
+export default handleMovement(Player)
