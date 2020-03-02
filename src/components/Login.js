@@ -1,5 +1,6 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
+import MuiAlert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -12,9 +13,13 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Axios from 'axios';
+import Snackbar from '@material-ui/core/Snackbar';
 
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
 function Copyright() {
   return (
@@ -57,13 +62,14 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    background: '#f21672'
+    background: '#4f4873'
   },
 }));
 
-export default function Login() {
+export default function Login(props) {
   const classes = useStyles();
   const [credentials, setCredentials] = useState({});
+  const [badCredentials, setBadCredentials] = useState(false)
 
   function handleChange(e){
     setCredentials({
@@ -77,9 +83,13 @@ export default function Login() {
       try {
         const res = await Axios.post(`https://reqres.in/api/login`, credentials);
         console.log(res);
+        localStorage.setItem('token', res.data.token)
+        props.history.push('/home')
+        
       }
       catch(err) {
           console.log(err);
+          setBadCredentials(true)
       }
   };
 
@@ -93,7 +103,7 @@ export default function Login() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Log in
           </Typography>
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
@@ -120,10 +130,9 @@ export default function Login() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+            {badCredentials && (
+                   <Alert severity="error">An error occurred, please try again.</Alert>
+              )}
             <Button
               type="submit"
               fullWidth
@@ -131,14 +140,9 @@ export default function Login() {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Log In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
                 <Link href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
