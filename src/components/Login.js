@@ -142,13 +142,13 @@ export default function Login(props) {
             >
               Log In
             </Button>
-            <Grid container>
-              <Grid item>
-                <Link href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
+            <Grid container justify="flex-end">
+            <Grid item>
+              <Link href="/signup" variant="body2">
+                Don't have an account? Sign up
+              </Link>
             </Grid>
+          </Grid>
             <Box mt={5}>
               <Copyright />
             </Box>
