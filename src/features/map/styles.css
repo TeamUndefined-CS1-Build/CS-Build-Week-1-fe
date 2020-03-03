@@ -1,6 +1,6 @@
 .tile {
     display: inline-flex;
-    background-color: green;
+    background-color: #42b842;
 }
 
 .rock {
@@ -12,5 +12,5 @@
 }
 
 .grass {
-    background-color: green;
+    background-color: #42b842;
 }
