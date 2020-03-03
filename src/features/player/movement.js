@@ -15,9 +15,27 @@ export default function handleMovement(player) {
             case 'SOUTH':
                 return [oldPos[0], oldPos[1] + TILE_SIZE]
         }
-
-
     }
+
+
+    const getSpriteLocation = (direction, walkIndex) => {
+        switch (direction) {
+            case 'SOUTH':
+                return `${TILE_SIZE * walkIndex}px ${TILE_SIZE * 0}px`
+            case 'EAST':
+                return `${TILE_SIZE * walkIndex}px ${TILE_SIZE * 1}px`
+            case 'WEST':
+                return `${TILE_SIZE * walkIndex}px ${TILE_SIZE * 2}px`
+            case 'NORTH':
+                return `${TILE_SIZE * walkIndex}px ${TILE_SIZE * 3}px`
+        }
+    }
+
+    const getWalkIndex = () => {
+        const walkIndex = store.getState().player.walkIndex
+        return walkIndex >= 7 ? 0 : walkIndex + 1
+    }
+
 
     const observeBoundries = (oldPos, newPos) => {
         return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - TILE_SIZE) &&
@@ -32,12 +50,15 @@ export default function handleMovement(player) {
         return nextTile < 5
     }
 
-    const move = (newPos) => {
-
+    const move = (direction, newPos) => {
+        const walkIndex = getWalkIndex()
         store.dispatch({
             type: 'MOVE_PLAYER',
             payload: {
-                position: newPos
+                position: newPos,
+                direction,
+                walkIndex,
+                spriteLocation: getSpriteLocation(direction, walkIndex)
             }
         })
     }
@@ -47,7 +68,7 @@ export default function handleMovement(player) {
         const newPos = getNewPosition(oldPos, direction)
 
         if (observeBoundries(oldPos, newPos) && observeObjects(oldPos, newPos)) {
-            move(newPos)
+            move(direction, newPos)
         }
     }
 
@@ -56,7 +77,7 @@ export default function handleMovement(player) {
         e.preventDefault()
 
         switch (e.keyCode) {
-            case 37 || 65:
+            case 37:
                 return tryMove('WEST')
             case 65:
                 return tryMove('WEST')
