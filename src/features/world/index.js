@@ -17,7 +17,7 @@ const World = props => {
             style={{
                 position: 'relative',
                 width: '800px',
-                height: '600px',
+                height: '400px',
                 margin: '20px auto'
             }}
         >
