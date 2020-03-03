@@ -56,16 +56,24 @@ export default function handleMovement(player) {
         e.preventDefault()
 
         switch (e.keyCode) {
-            case 37:
+            case 37 || 65:
+                return tryMove('WEST')
+            case 65:
                 return tryMove('WEST')
 
             case 38:
                 return tryMove('NORTH')
+            case 87:
+                return tryMove('NORTH')
 
             case 39:
                 return tryMove('EAST')
+            case 68:
+                return tryMove('EAST')
 
             case 40:
+                return tryMove('SOUTH')
+            case 83:
                 return tryMove('SOUTH')
 
             default:
