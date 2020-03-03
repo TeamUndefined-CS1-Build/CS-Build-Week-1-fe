@@ -43,7 +43,7 @@ const Map = props => {
                 left: '0px',
                 width: '800px',
                 height: '400px',
-                border: '4px solid white'
+                border: '4px solid black'
             }}
         >
             {props.tiles.map(row => <MapRow tiles={row} />)}
