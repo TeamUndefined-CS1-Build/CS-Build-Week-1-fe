@@ -1,4 +1,38 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import './styles.css'
+
+const getTileSprite = type => {
+    switch (type) {
+        case 0:
+            return 'grass'
+        case 5:
+            return 'rock'
+        case 6:
+            return 'tree'
+    }
+}
+
+const MapTile = props => {
+    return <div className={`tile ${getTileSprite(props.tile)}`}
+        style={{
+            height: '40px',
+            width: '40px'
+        }}
+    />
+}
+
+const MapRow = props => {
+    return <div className='row'
+        style={{
+            height: '40px'
+        }}
+    >
+        {
+            props.tiles.map(tile => <MapTile tile={tile} />)
+        }
+    </div>
+}
 
 const Map = props => {
     return (
@@ -9,11 +43,17 @@ const Map = props => {
                 left: '0px',
                 width: '800px',
                 height: '600px',
-                backgroundColor: 'green',
                 border: '4px solid white'
             }}
-        />
+        >
+            {props.tiles.map(row => <MapRow tiles={row} />)}
+        </div>
     )
 }
 
-export default Map
+const mapStateToProps = (state) => {
+    return {
+        tiles: state.map.tiles
+    }
+}
+export default connect(mapStateToProps)(Map)
