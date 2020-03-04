@@ -1,5 +1,8 @@
 import store from "../../config/store"
+import { connect } from 'react-redux'
 import { TILE_SIZE, MAP_HEIGHT, MAP_WIDTH } from '../../config/constants'
+
+
 
 export default function handleMovement(player) {
 
@@ -37,6 +40,34 @@ export default function handleMovement(player) {
     }
 
 
+    const rooms = store.getState().player.rooms
+
+    const newRoomDispatch = (currentRoom, direction) => {
+        store.dispatch({
+            type: 'ADD_TILES', payload: {
+                tiles: rooms[currentRoom[direction]].map
+            }
+        })
+        store.dispatch({
+            type: 'UPDATE_ROOM',
+            payload: {
+                currentRoom: rooms[currentRoom[direction]],
+                position: [360, 160]
+            }
+        })
+    }
+
+    const newRoomCheck = (currentRoom, direction) => {
+        if (rooms[currentRoom[direction]]) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
+
+
     const observeBoundries = (oldPos, newPos) => {
         return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - TILE_SIZE) &&
             (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - TILE_SIZE)
@@ -66,12 +97,16 @@ export default function handleMovement(player) {
     const tryMove = (direction) => {
         const oldPos = store.getState().player.position
         const newPos = getNewPosition(oldPos, direction)
-
+        const currentRoom = store.getState().player.currentRoom
         if (observeBoundries(oldPos, newPos) && observeObjects(oldPos, newPos)) {
             move(direction, newPos)
         }
+        else if (!observeBoundries(oldPos, newPos)) {
+            if (newRoomCheck(currentRoom, direction)) {
+                newRoomDispatch(currentRoom, direction)
+            }
+        }
     }
-
 
     const handleKeyDown = e => {
         e.preventDefault()
@@ -108,4 +143,3 @@ export default function handleMovement(player) {
 
     return player
 }
-

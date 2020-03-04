@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { connect } from 'react-redux'
 import './styles.css'
+import store from '../../config/store'
 
 const getTileSprite = type => {
     switch (type) {
@@ -10,6 +12,11 @@ const getTileSprite = type => {
             return 'rock'
         case 6:
             return 'tree'
+        case 10:
+            return 'door'
+
+        default:
+            return 'grass'
     }
 }
 
@@ -35,6 +42,14 @@ const MapRow = props => {
 }
 
 const Map = props => {
+    // useEffect(() => {
+    //     store.dispatch({
+    //         type: 'ADD_TILES', payload: {
+    //             tiles: props.tiles
+    //         }
+    //     })
+    // }, [props.tiles])
+
     return (
         <div
             style={{

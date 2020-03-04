@@ -1,5 +1,7 @@
+import { tiles } from '../../data/maps/1'
+
 const initialState = {
-    tiles: []
+    tiles: tiles
 }
 
 const mapReducer = (state = initialState, action) => {

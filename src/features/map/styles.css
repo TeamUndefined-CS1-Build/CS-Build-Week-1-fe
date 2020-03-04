@@ -14,3 +14,9 @@
 .grass {
     background-color: #42b842;
 }
+
+.door {
+    background-image: url('/tiles/door.png');
+}
+
+

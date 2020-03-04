@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Player from '../player';
 import Map from '../map'
 
@@ -7,11 +7,7 @@ import store from '../../config/store'
 
 
 const World = props => {
-    store.dispatch({
-        type: 'ADD_TILES', payload: {
-            tiles
-        }
-    })
+
     return (
         <div
             style={{

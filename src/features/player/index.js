@@ -21,5 +21,4 @@ const Player = props => {
         />
     )
 }
-
 export default handleMovement(Player)
