@@ -79,20 +79,24 @@ export default function Login(props) {
     })
   };
 
+  const postData = () => {
+    return Axios.post(`https://reqres.in/api/login`, credentials)
+    .then(res => {
+      localStorage.setItem('token', res.data.token)
+    })
+    .catch(err => {
+      setBadCredentials(true)
+      console.log(err)
+    })
+  }
   async function handleSubmit(e) {
       e.preventDefault()
-      try {
-        const res = await Axios.post(`https://reqres.in/api/login`, credentials);
-        console.log(res);
-        localStorage.setItem('token', res.data.token)
-        props.history.push('/world')
-        
-      }
-      catch(err) {
-          console.log(err);
-          setBadCredentials(true)
-      }
+      const res = await postData()
+      .then(res => props.history.push('/world'))
+      .catch(err => console.log(err))
+     
   };
+
 
   return (
     <Grid container component="main" className={classes.root}>

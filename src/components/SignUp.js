@@ -68,21 +68,23 @@ export default function SignUp(props) {
     console.log(credentials)
   };
 
+  const postData = () => {
+    return Axios.post(`https://reqres.in/api/register`, credentials)
+    .then(res => {
+      localStorage.setItem('token', res.data.token)
+    })
+    .catch(err => {
+      setError(true)
+      console.log(err)
+    })
+  }
   async function handleSubmit(e) {
       e.preventDefault()
-      try {
-        const res = await Axios.post(`https://reqres.in/api/register`, credentials);
-        console.log(res);
-        localStorage.setItem('token', res.data.token)
-        props.history.push('/world')
-        
-      }
-      catch(err) {
-          console.log(err);
-          setError(true)
-      }
+      const res = await postData()
+      .then(res => props.history.push('/world'))
+      .catch(err => console.log(err))
+     
   };
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

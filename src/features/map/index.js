@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { connect } from 'react-redux'
 import './styles.css'
-import store from '../../config/store'
+
 
 const getTileSprite = type => {
     switch (type) {

@@ -1,5 +1,4 @@
 import store from "../../config/store"
-import { connect } from 'react-redux'
 import { TILE_SIZE, MAP_HEIGHT, MAP_WIDTH } from '../../config/constants'
 
 
