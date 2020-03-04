@@ -1,6 +1,6 @@
 .tile {
     display: inline-flex;
-    background-color: #42b842;
+    background-color: hsl(120, 22%, 35%);
 }
 
 .rock {
@@ -9,10 +9,11 @@
 
 .tree {
     background-image: url('/tiles/tree.png');
+    background-blend-mode: multiply;
 }
 
 .grass {
-    background-color: #42b842;
+    background-color: hsl(120, 22%, 35%);
 }
 
 .door {
