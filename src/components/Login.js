@@ -85,7 +85,7 @@ export default function Login(props) {
         const res = await Axios.post(`https://reqres.in/api/login`, credentials);
         console.log(res);
         localStorage.setItem('token', res.data.token)
-        props.history.push('/home')
+        props.history.push('/world')
         
       }
       catch(err) {

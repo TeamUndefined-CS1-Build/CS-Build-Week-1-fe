@@ -138,7 +138,7 @@ export default function handleMovement(player) {
     }
 
     window.addEventListener('keydown', (e) => {
-        handleKeyDown(e)
+        document.URL == 'http://localhost:3000/world' && handleKeyDown(e)
     })
 
     return player

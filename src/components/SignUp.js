@@ -74,7 +74,7 @@ export default function SignUp(props) {
         const res = await Axios.post(`https://reqres.in/api/register`, credentials);
         console.log(res);
         localStorage.setItem('token', res.data.token)
-        props.history.push('/home')
+        props.history.push('/world')
         
       }
       catch(err) {
