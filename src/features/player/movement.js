@@ -1,5 +1,4 @@
 import store from "../../config/store"
-import { connect } from 'react-redux'
 import { TILE_SIZE, MAP_HEIGHT, MAP_WIDTH } from '../../config/constants'
 
 
@@ -138,7 +137,7 @@ export default function handleMovement(player) {
     }
 
     window.addEventListener('keydown', (e) => {
-        handleKeyDown(e)
+        document.URL.includes('/world') && handleKeyDown(e)
     })
 
     return player
