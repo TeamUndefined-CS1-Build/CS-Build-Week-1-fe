@@ -50,7 +50,8 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    background: '#4f4873'
+    background: '#4f4873',
+    fontFamily: 'Roboto Mono',
   },
 }));
 
@@ -89,9 +90,7 @@ export default function SignUp(props) {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
+        <h2>Sign up</h2>
         <form className={classes.form} noValidate onChange={handleChange} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
