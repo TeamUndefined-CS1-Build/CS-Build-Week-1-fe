@@ -8,7 +8,9 @@ const classes = {
         height: '100vh',
         textAlign: 'left',
         transition: '0.5s',
-        background: 'linear-gradient(rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.95)), url(https://images.unsplash.com/photo-1553986782-9f6de60b51b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1632&q=80)'
+        background: 'linear-gradient(rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.95)), url(https://images.unsplash.com/photo-1440581572325-0bea30075d9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
     },
     top: {
 
