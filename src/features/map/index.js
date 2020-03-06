@@ -41,14 +41,6 @@ const MapRow = props => {
 }
 
 const Map = props => {
-    // useEffect(() => {
-    //     store.dispatch({
-    //         type: 'ADD_TILES', payload: {
-    //             tiles: props.tiles
-    //         }
-    //     })
-    // }, [props.tiles])
-
     return (
         <div
             style={{
